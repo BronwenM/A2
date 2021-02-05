@@ -2,24 +2,36 @@
     <head>
         <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
-        
+        <script src="js/interaction.js"></script>
 </head>
 
     </head>
     <body>
         <a-scene>
-            <a-camera>
-                <a-entity cursor="fuse:true; fuseTimeout: 500;" position="0 0 -1" geometry="primitive: ring; radiusInner:0.02; radiusOuter:0.025" material="color:black; shader:flat;"></a-entity>
-            </a-camera>
+            <a-entity camera wasd-controls look-controls position="0 1.6 0">
+                <a-entity cursor="rayOrigin:mouse;" raycaster="far:20; interval:200; objects:.clickable" position="0 0 -1" geometry="primitive: ring; radiusInner:0.02; radiusOuter:0.025" material="color:black; shader:flat;"></a-entity>
+            </a-entity>
             <a-assets timeout="500">
                 <audio id="shape-music" src="public\assets\wings.mp3" preload="auto" crossorigin="anonymous"></audio>
             </a-assets>
+
+            <a-audio></a-audio>
             
             <a-plane position="0 0.1 0" rotation="-90 0 0" width="30" height="30" color="#009c1a"></a-plane>
 
             <a-entity id="spawn-sphere">
                 <a-box position="-0.5 0.5 -1.5" rotation="0 0 0" scale="0.328 0.905 0.328" color="#ffffff">
-                    <a-cylinder id="spawn-button" cursor-listener position="0 0.525 0" rotation="0 0 0" radius="0.35" height="0.1" color="#ff1e00"></a-cylinder>
+                    <a-cylinder class="clickable" 
+                    id="spawn-button" 
+                    cursor-listener 
+                    position="0 0.525 0" 
+                    rotation="0 0 0" 
+                    radius="0.35" 
+                    height="0.1" 
+                    material="color:#ff1e00"
+                    animation__mouseenter="property:material.color; type:color; to:#ff371c; startEvents:mouseenter; dur:100"
+                    animation__mouseleave="property:material.color; type:color; to:#ff1e00; startEvents:mouseleave; dur:100"
+                    animation__click="property:position.y; from:0.525; to:0.505; startEvents:click; dur:300" ></a-cylinder>
                     <a-box position="0 0.339 0.521" rotation="0 0 0" scale="1.4 0.3 0.05" color="#964b00">
                         <a-entity text="value:Spawn a new sphere; font:roboto; width:1.3; anchor:center; baseline:top; wrapCount:16; align:center;" position="-0.01 0.097 1"></a-entity>
                     </a-box>
@@ -27,7 +39,17 @@
             </a-entity>
             <a-entity id="play-pause">
                 <a-box position="0.5 0.5 -1.5" rotation="0 0 0" scale="0.328 0.905 0.328" color="#ffffff">
-                    <a-cylinder id="play-button" cursor-listener position="0 0.525 0" rotation="0 0 0" radius="0.35" height="0.1" color="#ff1e00"></a-cylinder>
+                    <a-cylinder class="clickable" 
+                    id="play-button" 
+                    cursor-listener 
+                    position="0 0.525 0" 
+                    rotation="0 0 0" 
+                    radius="0.35" 
+                    height="0.1" 
+                    color="#ff1e00"
+                    animation__mouseenter="property:material.color; type:color; to:#ff371c; startEvents:mouseenter; dur:100"
+                    animation__mouseleave="property:material.color; type:color; to:#ff1e00; startEvents:mouseleave; dur:100"
+                    animation__click="property:position.y; from:0.525; to:0.505; startEvents:click; dur:300"></a-cylinder>
                     <a-box position="0 0.339 0.521" rotation="0 0 0" scale="1.4 0.3 0.05" color="#964b00">
                         <a-entity text="value:Play/Pause; font:roboto; width:1.3; anchor:center; baseline:top; wrapCount:13; align:center;" position="0.04 0.044 1"></a-entity>
                     </a-box>
