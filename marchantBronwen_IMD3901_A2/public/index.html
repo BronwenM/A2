@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+</head>
+
+    </head>
+    <body>
+        <a-scene>
+            <a-assets timeout="10000">
+                <audio id="shape-music" src="public\assets\wings.mp3" preload="auto" crossorigin="anonymous"></audio>
+            </a-assets>
+            
+            <a-plane position="0 0.1 0" rotation="-90 0 0" width="30" height="30" color="#009c1a"></a-plane>
+
+            <a-entity id="spawn-sphere">
+                <a-box position="-0.5 0.5 -1.5" rotation="0 0 0" scale="0.328 0.905 0.328" color="#ffffff">
+                    <a-cylinder position="0 0.525 0" rotation="0 0 0" radius="0.35" height="0.1" color="#ff1e00"></a-cylinder>
+                    <a-box position="0 0.339 0.521" rotation="0 0 0" scale="1.4 0.3 0.05" color="#964b00">
+                        <a-entity text="value:Spawn a new sphere; font:roboto; width:1.3; anchor:center; baseline:top; wrapCount:16; align:center;" position="-0.01 0.097 1"></a-entity>
+                    </a-box>
+                </a-box>
+            </a-entity>
+            <a-entity id="play-pause">
+                <a-box position="0.5 0.5 -1.5" rotation="0 0 0" scale="0.328 0.905 0.328" color="#ffffff">
+                    <a-cylinder position="0 0.525 0" rotation="0 0 0" radius="0.35" height="0.1" color="#ff1e00"></a-cylinder>
+                    <a-box position="0 0.339 0.521" rotation="0 0 0" scale="1.4 0.3 0.05" color="#964b00">
+                        <a-entity text="value:Play/Pause; font:roboto; width:1.3; anchor:center; baseline:top; wrapCount:13; align:center;" position="0.04 0.044 1"></a-entity>
+                    </a-box>
+                </a-box>
+            </a-entity>
+            
+
+            <a-entity environment="preset: forest; dressingAmount: 200"></a-entity>
+        </a-scene>
+    </body>
+</html>
