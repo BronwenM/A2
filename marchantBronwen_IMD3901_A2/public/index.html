@@ -14,8 +14,6 @@
             <a-assets timeout="500">
                 <audio id="shape-music" src="public\assets\wings.mp3" preload="auto" crossorigin="anonymous"></audio>
             </a-assets>
-
-            <a-audio></a-audio>
             
             <a-plane position="0 0.1 0" rotation="-90 0 0" width="30" height="30" color="#009c1a"></a-plane>
 
@@ -56,7 +54,7 @@
                 </a-box>
             </a-entity>
             
-            <a-sphere click-drag position="0 1.25 -5" radius="1.25" color="#001996" geometry rotation scale visible material></a-sphere>
+            <a-sphere click-drag position="0 1.25 -5" radius="1.25" color="#001996" sound="src:#shape-music"></a-sphere>
 
             <a-entity environment="preset: forest; dressingAmount: 200"></a-entity>
         </a-scene>
